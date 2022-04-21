@@ -5,12 +5,12 @@ import (
 	"time"
 )
 
-type Bead struct {
+type bead struct {
 	x int
 	y int
 }
 
-func (b *Bead) Advance() (int, int) {
+func (b *bead) Advance() (int, int) {
 	rand.Seed(time.Now().UnixNano())
 	dir := rand.Int() % 3
 	if dir == 0 {
@@ -23,12 +23,12 @@ func (b *Bead) Advance() (int, int) {
 	return b.x, b.y
 }
 
-func (b *Bead) Reset(size, layers int) (int, int) {
+func (b *bead) Reset(size, layers int) (int, int) {
 	(*b).x = size / 2
 	(*b).y = layers
 	return (*b).x, (*b).y
 }
 
-func (b Bead) ReadX() int {
+func (b bead) ReadX() int {
 	return b.x
 }
