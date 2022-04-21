@@ -2,14 +2,9 @@ package main
 
 import "main.go/structs"
 
-const height = 12
-const containerSize = 28
-const numOfBeads = 3000
-
 func main() {
-
-	board := structs.Galtonboard(height, containerSize, numOfBeads)
+	board := structs.Galtonboard(30, 28, 3000)
 	board.CalculateResults()
 	board.PrintResults()
-
+	board.DisplayResults()
 }

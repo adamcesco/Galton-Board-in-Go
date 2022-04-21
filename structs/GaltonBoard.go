@@ -51,3 +51,32 @@ func (g *galtonBoard) PrintResults() {
 	}
 	fmt.Println()
 }
+
+func (g *galtonBoard) DisplayResults() {
+	var max int
+	buffer := g.numOfBeads / 100
+	rCopy := g.results
+	for i := 0; i < g.containerSize; i++ {
+		if rCopy[i] < buffer && rCopy[i] > 0 {
+			rCopy[i] = 1
+		} else {
+			rCopy[i] /= buffer
+		}
+		if rCopy[i] > max {
+			max = rCopy[i]
+		}
+	}
+
+	for max > 0 {
+		for i := 0; i < g.containerSize; i++ {
+			if rCopy[i] == max {
+				fmt.Print("*")
+				rCopy[i]--
+			} else {
+				fmt.Print(" ")
+			}
+		}
+		max--
+		fmt.Println()
+	}
+}
