@@ -11,7 +11,7 @@ type bead struct {
 	maxX int
 }
 
-func (b *bead) Advance() (int, int) {
+func (b *bead) advance() (int, int) {
 	rand.Seed(time.Now().UnixNano())
 	dir := rand.Int() % 3
 	if dir == 0 && b.x > 0 {
@@ -24,13 +24,9 @@ func (b *bead) Advance() (int, int) {
 	return b.x, b.y
 }
 
-func (b *bead) Reset(size, layers int) (int, int) {
+func (b *bead) reset(size, layers int) (int, int) {
 	b.maxX = size - 1
 	(*b).x = size / 2
 	(*b).y = layers
 	return (*b).x, (*b).y
-}
-
-func (b bead) ReadX() int {
-	return b.x
 }

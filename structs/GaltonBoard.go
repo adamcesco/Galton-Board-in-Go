@@ -20,7 +20,7 @@ func Galtonboard(layers, containerSize, numOfBeads int) galtonBoard {
 	}
 
 	for i := 0; i < toReturn.numOfBeads; i++ {
-		toReturn.beads[i].Reset(toReturn.containerSize, toReturn.layers)
+		toReturn.beads[i].reset(toReturn.containerSize, toReturn.layers)
 	}
 
 	return toReturn
@@ -29,19 +29,19 @@ func Galtonboard(layers, containerSize, numOfBeads int) galtonBoard {
 func (g *galtonBoard) Reset() {
 	g.results = make([]int, g.containerSize)
 	for i := 0; i < g.numOfBeads; i++ {
-		g.beads[i].Reset(g.containerSize, g.layers)
+		g.beads[i].reset(g.containerSize, g.layers)
 	}
 }
 
 func (g *galtonBoard) CalculateResults() {
 	for i := 0; i < g.layers; i++ {
 		for j := 0; j < g.numOfBeads; j++ {
-			g.beads[j].Advance()
+			g.beads[j].advance()
 		}
 	}
 
 	for _, bead := range g.beads {
-		g.results[bead.ReadX()]++
+		g.results[bead.x]++
 	}
 }
 
@@ -54,7 +54,7 @@ func (g *galtonBoard) PrintResults() {
 
 func (g *galtonBoard) DisplayResults() {
 	var max int
-	buffer := g.numOfBeads / 100
+	buffer := g.numOfBeads / 120
 	rCopy := g.results
 	for i := 0; i < g.containerSize; i++ {
 		if rCopy[i] < buffer && rCopy[i] > 0 {
@@ -70,13 +70,14 @@ func (g *galtonBoard) DisplayResults() {
 	for max > 0 {
 		for i := 0; i < g.containerSize; i++ {
 			if rCopy[i] == max {
-				fmt.Print("*")
+				fmt.Print("|*")
 				rCopy[i]--
 			} else {
-				fmt.Print(" ")
+				fmt.Print("| ")
 			}
 		}
+		fmt.Println("|")
+
 		max--
-		fmt.Println()
 	}
 }
