@@ -1,9 +1,9 @@
 package main
 
-import "main.go/structs"
+import "main.go/GaltonStructs"
 
 func main() {
-	board := structs.GaltonBoard(30, 28, 3000)
+	board := GaltonStructs.GaltonBoard(30, 28, 3000)
 	board.CalculateResults()
 	board.PrintResults()
 	board.DisplayResults()

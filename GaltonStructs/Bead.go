@@ -1,4 +1,4 @@
-package structs
+package GaltonStructs
 
 import (
 	"math/rand"
