@@ -10,7 +10,7 @@ type galtonBoard struct {
 	beads         []bead
 }
 
-func GaltonBoard(layers, containerSize, numOfBeads int) galtonBoard {
+func CreateGaltonBoard(layers, containerSize, numOfBeads int) galtonBoard {
 	toReturn := galtonBoard{
 		layers:        layers,
 		containerSize: containerSize,
