@@ -6,8 +6,6 @@ To use the custom package within this project, *"GaltonStructs"*
     
 >    go get github.com/adamcesco/Galton-Board-in-Go/GaltonStructs
 
->    go install github.com/adamcesco/Galton-Board-in-Go/GaltonStructs
-
 ## Description
 
 This project was my introduction into the Go programming language. I'm excited to continue writing in Golang.
