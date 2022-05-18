@@ -1,6 +1,9 @@
 package GaltonStructs
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type galtonBoard struct {
 	layers        int
@@ -10,7 +13,11 @@ type galtonBoard struct {
 	beads         []bead
 }
 
-func CreateGaltonBoard(layers, containerSize, numOfBeads int) galtonBoard {
+func CreateGaltonBoard(layers, containerSize, numOfBeads int) (galtonBoard, error) {
+	if numOfBeads < 120 {
+		return galtonBoard{}, errors.New("error in \"func CreateGaltonBoard(layers, containerSize, numOfBeads int) (galtonBoard, error)\" | passed number of beads is below 120")
+	}
+
 	toReturn := galtonBoard{
 		layers:        layers,
 		containerSize: containerSize,
@@ -23,7 +30,7 @@ func CreateGaltonBoard(layers, containerSize, numOfBeads int) galtonBoard {
 		toReturn.beads[i].reset(toReturn.containerSize, toReturn.layers)
 	}
 
-	return toReturn
+	return toReturn, nil
 }
 
 func (g *galtonBoard) Reset() {
